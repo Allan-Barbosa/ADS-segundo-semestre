@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "Q1.C": "cpp",
+        "Ex.C": "cpp",
+        "Q2.C": "cpp",
+        "teste.C": "cpp",
+        "Q3.C": "cpp",
+        "Q2(Pesquisa-sequencial).C": "cpp",
+        "buble-sort.C": "cpp",
+        "Q3bublesort.C": "cpp",
+        "Q3(bublesort)4.C": "cpp",
+        "Q3(bublesort).C": "cpp"
+    }
+}
