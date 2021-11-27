@@ -45,11 +45,11 @@ public class App {
                 System.out.println("Esta conta não existe no banco maut, seu dinheiro será devolvido");
                 conta.deposita(f);
             }
+        }
         if (escolha == 5)
         {
             System.out.println("Quantidade de contas no Banco Maut: " + Conta.getQuantidadeDeContas());
         }
-        }    
         System.out.println("Digite 1 para continuar e 0 para sair: ");
         continua = teclado.nextInt();
 
