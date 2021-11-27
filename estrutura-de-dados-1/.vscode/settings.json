@@ -9,6 +9,7 @@
         "buble-sort.C": "cpp",
         "Q3bublesort.C": "cpp",
         "Q3(bublesort)4.C": "cpp",
-        "Q3(bublesort).C": "cpp"
+        "Q3(bublesort).C": "cpp",
+        "Q4.C": "cpp"
     }
 }
