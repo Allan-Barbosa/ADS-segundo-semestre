@@ -21,34 +21,40 @@ public class Conta {
   {
     if (valor >= 0){
     this.saldo += valor;
-    System.out.println("Novo saldo: " + this.saldo);
+    System.out.println("Saldo da conta: " + this.saldo);
+    this.enviaNotificacao("deposito",valor);
     }
     else
     {
       System.out.println("Valor inválido.");
     }
   }
-  public void saque(double valor)
+  public boolean saque(double valor)
   {
-    if (valor <= this.saldo){this.saldo -= valor;
-      System.out.println("Novo saldo: " + this.saldo);}
+    if (valor <= this.saldo){
+      this.saldo -= valor;
+      System.out.println("Saldo da conta: " + this.saldo);
+      this.enviaNotificacao("saque",valor);
+      return true;}
     else{
       System.out.println("Valor inválido.");
+      return false;
     }
   }
-  public double transferir(double valor)
+  public void transferir(double valor, Conta contaDestino)
   {
-    if (valor <= saldo)
-    {
-      this.saldo -=valor;
-      System.out.println("Novo saldo: " + this.saldo);
-      return valor;
-    }
-    else{
-      System.out.println("Valor inválido.");
-      return 0.0;
+    boolean saqueComSucesso = this.saque(valor);
+    if (saqueComSucesso){
+    contaDestino.deposita(valor);
+    System.out.println("Transferência concluída.");
+    this.enviaNotificacao("transfere",valor);
     }
   }
+
+  private void enviaNotificacao(String operacao,double valor) {
+    new Notificacao().enviaNotificacao(operacao,valor);
+  }
+
 
   public int getAgência() {
     return this.agência;

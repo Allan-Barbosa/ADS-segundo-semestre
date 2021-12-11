@@ -1,17 +1,19 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 import javax.print.FlavorException;
 public class App {
     public static void main(String[] args) throws Exception {
         int continua=1;
-        while (continua==1){
         Scanner teclado = new Scanner(System.in);
-
-        Cliente cliente1 = new Cliente("allan","94738847326",10102001,"Picos-PI");
+        LocalDate dataNascimento = LocalDate.of(2002,6,15);
+        Cliente cliente1 = new Cliente("allan","000.000.000-00",dataNascimento,new Endereço("logradouro 1", 10, "bairro", "Picos", "PI"));
         Conta conta = new Conta(1041,1433,cliente1,1000);
         
-        Cliente cliente2 = new Cliente("lucas","94843284326",25052003,"Picos-PI");
+        Cliente cliente2 = new Cliente("lucas","111.111.111-11",dataNascimento,new Endereço("logradouro 1", 11, "bairro", "Picos", "PI"));
         Conta conta2 = new Conta(241,5523,cliente2,400);
-
+        
+        while (continua==1){
+    
         System.out.println("Digite 1 para ver o saldo, digite 2 para depositar, digite 3 para sacar, digite 4 para transferir dinheiro ou digite 5 para ver quantas contas temos no banco: ");
         int escolha = teclado.nextInt();
         if (escolha == 1){
@@ -33,18 +35,8 @@ public class App {
         {
             System.out.println("Digite o valor a ser transferido(use vírgula): ");
             double d = teclado.nextDouble();
-            double f = conta.transferir(d);
-            System.out.println("Digite o número da conta que irá receber a transferência: ");
-            int a = teclado.nextInt();
-            if (a==5523){
-                System.out.println("Transferência realizada com sucesso.");
-                System.out.println("Saldo da conta que recebeu a transferência: ");
-                conta2.deposita(f);
-            }
-            else{
-                System.out.println("Esta conta não existe no banco maut, seu dinheiro será devolvido");
-                conta.deposita(f);
-            }
+            conta.transferir(d,conta2);
+            
         }
         if (escolha == 5)
         {
